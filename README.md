@@ -1,21 +1,21 @@
 # 📦 Tarsau - Arşivleme Programı
 
-Linux üzerinde C diliyle geliştirilmiş, metin dosyalarını (.txt ve .dat) tek paket haline getiren ve orijinal izinleriyle geri çıkaran bir arşivleme yazılımıdır.
+Linux üzerinde C diliyle geliştirilmiş, metin dosyalarını (.txt ve .dat) tek paket halinde birleştiren ve orijinal izinleriyle geri çıkaran bir arşivleme yazılımıdır.
 
 ---
 
-## Özellikler
+## 🛠️ Özellikler
 
 - Giriş Kontrolü: Sadece .txt ve .dat uzantılı metin dosyalarını işler.
 - Kapasite: En fazla 32 dosya ve maksimum 200 MB toplam boyut destekler.
 - Çıktı Yönetimi: -o kullanılmazsa varsayılan olarak a.sau adını alır.
-- Dizin Otomasyonu: Hedef klasör yoksa otomatik oluşturulur.
-- İzin Koruma: Dosyaların Linux okuma, yazma, çalıştırma (rwx) izinlerini aynen geri yükler.
+- Dizin Otomasyonu: Hedef klasör sistemde yoksa otomatik oluşturulur.
+- 🔒 İzin Koruma: Dosyaların Linux okuma, yazma, çalıştırma (rwx) izinlerini aynen geri yükler.
 - Kararlılık: Hatalı parametre veya bozuk arşiv durumunda çökmeden hata mesajı verir.
 
 ---
 
-## Derleme ve Çalıştırma
+## 💻 Derleme ve Çalıştırma
 
 Derlemek için:
 make
@@ -25,7 +25,7 @@ make clean
 
 ---
 
-## Kullanım Senaryoları
+## 🚀 Kullanım Senaryoları
 
 ### 1. Paketleme Modu (-b)
 Dosyaları tek bir .sau arşivinde toplar.
@@ -36,7 +36,7 @@ Dosyaları tek bir .sau arşivinde toplar.
 Varsayılan isimle (a.sau) arşivleme:
 ./tarsau -b dosya1.txt dosya2.txt
 
-Hatalı format testi:
+⚠️ Hatalı format testi:
 ./tarsau -b dosya1.txt t7.mp3
 Çıktı: t7.mp3 giris dosyasinin formati uyumsuzdur!
 
@@ -49,17 +49,17 @@ Belirli klasöre çıkarma:
 Bulunulan dizine çıkarma:
 ./tarsau -a odevim.sau
 
-Fazla parametre testi:
+⚠️ Fazla parametre testi:
 ./tarsau -a odevim.sau klasor1 klasor2
 Çıktı: Arsiv dosyasi uygunsuz veya bozuk!
 
-Hatalı uzantı testi:
+⚠️ Hatalı uzantı testi:
 ./tarsau -a dosya1.txt
 Çıktı: Arsiv dosyasi uygunsuz veya bozuk!
 
 ---
 
-## Arşiv Yapısı
+## 📐 Arşiv Yapısı (.sau)
 
-1. Organizasyon Bölümü: İlk 10 bayt, bu bölümün toplam karakter uzunluğunu tutar (Örn: 0000000125). Ardından her dosya verisi |dosya_adi,izin,boyut| şeklinde eklenir.
-2. Veri Bölümü: Meta-veri alanı bittiği andan itibaren tüm kaynak dosyaların içerikleri peş peşe arşive yazılır.
+1. 🗂️ Organizasyon Bölümü: İlk 10 bayt, bu bölümün toplam karakter uzunluğunu tutar (Örn: 0000000125). Ardından her dosya verisi |dosya_adi,izin,boyut| şeklinde eklenir.
+2. 💾 Veri Bölümü: Meta-veri alanı bittiği andan itibaren tüm kaynak dosyaların içerikleri peş peşe arşive yazılır.
